@@ -5,24 +5,11 @@
  * Data attributes, getters, setters, constructors, and toString function
  */
 public class pictureData {
-    private double length;
-    private double width;
+
     private String description;
     private String date; 
     private String name;
     
-    public double getLength() {
-        return length;
-    }
-    public void setLength(double length) {
-        this.length = length;
-    }
-    public double getWidth() {
-        return width;
-    }
-    public void setWidth(double width) {
-        this.width = width;
-    }
     public String getDescription() {
         return description;
     }
@@ -43,24 +30,21 @@ public class pictureData {
     }
     //do not really need a default constructor
     public pictureData(){
-        length = 0;
-        width = 0;
         description = "";
         date = "";
         name = "";
     }
-    public pictureData(double length, double width, String description, String date, String name) {
-        this.length = length;
-        this.width = width;
+    public pictureData( String description, String date, String name) {
         this.description = description;
         this.date = date;
         this.name = name;
     }
-
     @Override
     public String toString() {
-        return "pictureData [date=" + date + ", description=" + description + ", length=" + length + ", name=" + name
-                + ", width=" + width + "]";
+        return "pictureData [date=" + date + ", description=" + description + ", name=" + name + "]";
+    }
+
+ 
     }
     
-}
+
