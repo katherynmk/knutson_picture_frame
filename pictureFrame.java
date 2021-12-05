@@ -14,6 +14,21 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class pictureFrame extends JFrame{
+    public pictureFrame(){
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Picture Frame");
+        setBounds(100,100,500,500);
+        Container c = getContentPane();
+        c.setLayout(new BorderLayout());
+        JPanel panCenter = new JPanel();
+        panCenter.setBackground(Color.RED);
+        JPanel panSouth = new JPanel();
+        panSouth.setBackground(Color.WHITE);
+        JButton prev = new JButton("Prev");
+        panSouth.add(prev);
+        c.add(panCenter, BorderLayout.CENTER);
+        c.add(panSouth, BorderLayout.SOUTH);
 
+    }
 
 }
