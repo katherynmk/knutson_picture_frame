@@ -11,7 +11,9 @@
  */
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class pictureFrame {
+public class pictureFrame extends JFrame{
+
 
 }

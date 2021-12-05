@@ -1,3 +1,4 @@
+
 /**
  * @author Katie Knutson 
  * @version 1.5
@@ -9,6 +10,16 @@
  * renders the new image
  */
 
-public class picturePanel {
+
+import java.awt.Dimension;
+import java.awt.event.*;
+import java.util.*;
+import java.io.*;
+import java.awt.image.*;
+import javax.imageio.*;
+import javax.swing.*;
+
+public class picturePanel extends JPanel implements MouseListener, MouseMotionListener  {
+
     
 }
