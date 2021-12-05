@@ -63,6 +63,7 @@ public class pictureFrame extends JFrame{
         panSouth.add(save);
         JButton next = new JButton ("Next");
         panSouth.add(next);
+        panCenter = new picturePanel();
         c.add(panCenter, BorderLayout.CENTER);
         c.add(panSouth, BorderLayout.SOUTH);
 
