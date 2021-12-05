@@ -9,6 +9,9 @@
  * JTextField for holding the date, its center section filled with the description JTextArea, and its
  * south section filled with a JPanel that holds the three buttons.
  */
+import javax.swing.*;
+import java.awt.*;
+
 public class pictureFrame {
-    
+
 }
