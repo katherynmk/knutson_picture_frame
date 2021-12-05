@@ -18,8 +18,18 @@ import java.io.*;
 import java.awt.image.*;
 import javax.imageio.*;
 import javax.swing.*;
+import java.awt.Graphics;
 
-public class picturePanel extends JPanel implements MouseListener, MouseMotionListener  {
 
+public class picturePanel extends JPanel  {
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        try {
+            BufferedImage img = ImageIO.read(new File("pic1.png"));
+        g.drawImage(img, 290, 400, null);
+        } catch (Exception ex){
+
+        }
+    }
     
 }
