@@ -25,7 +25,7 @@ public class pictureDataReader  {
                 Picture = new pictureData(description, date, name);
                 pictures.add(Picture);
 
-            }while (sc.hasNext());
+            }while (sc.hasNextLine());//fix
 
     } catch(Exception ex){
         //if the name of the file does not exist the function should return null
@@ -33,4 +33,8 @@ public class pictureDataReader  {
         }
         return pictures;
     }
+    public static void main(String[] args) throws Exception {
+        System.out.println(readQuestionsFromFile("descriptions.txt"));
+    }
+
 }

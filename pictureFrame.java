@@ -42,18 +42,21 @@ public class pictureFrame extends JFrame{
         mnuHelp.add(miAbout);
         setJMenuBar(mbar);
     }
-
+//1 text panel, 1 button panel, 1 picture panel 
     
     public pictureFrame(){
         //code from notes 
+
+        
         setupMainMenu();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Picture Frame");
         setBounds(100,100,290,400);
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
-        JPanel panCenter = new JPanel();
-        panCenter.setBackground(Color.RED);
+
+        //this is where the buttons are 
+        JPanel panCenter = new JPanel(new BorderLayout());
         JPanel panSouth = new JPanel();
         panSouth.setBackground(Color.WHITE);
         //add all of the buttons to the botton 
@@ -63,9 +66,19 @@ public class pictureFrame extends JFrame{
         panSouth.add(save);
         JButton next = new JButton ("Next");
         panSouth.add(next);
-        panCenter = new picturePanel();
+        panCenter.add(panSouth, BorderLayout.SOUTH);
+        
+
+        //where the pictures are
+        picturePanel picturePanel = new picturePanel();
+        c.add(picturePanel, BorderLayout.NORTH);
+
+        //this is where the text is 
+        JTextField date = new JTextField("yeet");
+        JTextArea description = new JTextArea("desceioptjajf");
+        panCenter.add(date, BorderLayout.NORTH);
+        panCenter.add(description, BorderLayout.CENTER);
         c.add(panCenter, BorderLayout.CENTER);
-        c.add(panSouth, BorderLayout.SOUTH);
 
     }
 
