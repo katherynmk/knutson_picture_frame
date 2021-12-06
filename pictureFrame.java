@@ -49,7 +49,7 @@ public class pictureFrame extends JFrame{
         setupMainMenu();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Picture Frame");
-        setBounds(100,100,500,500);
+        setBounds(100,100,290,400);
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
         JPanel panCenter = new JPanel();
