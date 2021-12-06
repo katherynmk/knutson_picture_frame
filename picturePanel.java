@@ -21,9 +21,10 @@ import javax.swing.*;
 import java.awt.Graphics;
 
 
-public class picturePanel extends JPanel implements MouseListener {
+public class picturePanel extends JPanel implements MouseListener, MouseMotionListener {
     private String messageToShow;
     private int msgX, msgY;
+    private BufferedImage picture;
   
     public picturePanel() {
             messageToShow = "(x = 0, y = 0)";
@@ -32,17 +33,26 @@ public class picturePanel extends JPanel implements MouseListener {
             msgX = 10;
             msgY = 20;
         }
+        //my main man mike
+    public void setPicture(BufferedImage picture){
+            this.picture = picture;
+            repaint();
+         }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawString(messageToShow,msgX,msgY);
+        
         try {
             BufferedImage img = ImageIO.read(new File("pic1.png"));
         g.drawImage(img, 0, 0, null);
         } catch (Exception ex){ 
 
             }
+        g.drawString(messageToShow,msgX,msgY);
         }
+
+    //straight from Klumps notes
     public void mouseClicked(MouseEvent e) {
         messageToShow = String.format("(%d, %d)",e.getX(),e.getY());
         msgX = e.getX();
@@ -73,6 +83,9 @@ public class picturePanel extends JPanel implements MouseListener {
         repaint(); // forces paintComponent to be called
        
     }
-
+    public void mouseDragged(MouseEvent e) {
+        messageToShow = String.format("(%d, %d)",e.getX(),e.getY());
+        repaint(); // forces paintComponent to be called
+    }
     
 }
