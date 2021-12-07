@@ -34,7 +34,7 @@ public class picturePanel extends JPanel implements MouseListener, MouseMotionLi
             msgX = 10;
             msgY = 20;
         }
-        //my main man mike
+        
     public void setPicture(BufferedImage picture){
             this.picture = picture;
             repaint();

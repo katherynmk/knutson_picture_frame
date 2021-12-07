@@ -8,3 +8,7 @@ I started work right as this project was released and my hands are killing my.
 RIP Katie's hands, may they go on to a better keyboard someday....
 
 Please refer to the tutoring classroom png so see us all sitting in our virtual classroom
+
+ALSO
+The Code doesnt cycle around..........
+You get the pictures you get :(
