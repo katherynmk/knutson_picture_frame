@@ -16,16 +16,16 @@ public class pictureLoader {
     public static ArrayList<BufferedImage> loadImagesFromPictureData(ArrayList<pictureData> pictureData ) {
         ArrayList<BufferedImage> loadedpictures = new ArrayList<BufferedImage>();
         BufferedImage picture = null;
-
-       try{ for(int i = 0; i < pictureData .size(); i++){
+        for(int i = 0; i < pictureData.size(); i++){ 
+       try{ 
            picture = ImageIO.read(new File(pictureData.get(i).getName()));
-           loadedpictures.add(i, picture);
-        }
+           loadedpictures.add(picture);
 
-      }
+        }
       catch(Exception ex){
         return null;
       }
+    }
       return loadedpictures;
     }
      }

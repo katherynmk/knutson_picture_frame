@@ -83,7 +83,7 @@ public class pictureFrame extends JFrame {
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
 
-        picturePanel picturePanel = new picturePanel();
+        picturePanel picturePanel = new picturePanel(loadedpictures.get(index));
         c.add(picturePanel, BorderLayout.NORTH);
 
         //this is where the text is 

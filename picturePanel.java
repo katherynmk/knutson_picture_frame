@@ -25,7 +25,8 @@ public class picturePanel extends JPanel implements MouseListener, MouseMotionLi
     private int msgX, msgY;
     private BufferedImage picture;
   
-    public picturePanel() {
+    public picturePanel(BufferedImage picture) {
+            this.picture = picture;
             messageToShow = "(x = 0, y = 0)";
             setPreferredSize(new Dimension(200,200)); 
             addMouseListener(this);
