@@ -39,6 +39,7 @@ public class pictureData {
         this.date = date;
         this.name = name;
     }
+    //to string method
     @Override
     public String toString() {
         return "pictureData [date=" + date + ", description=" + description + ", name=" + name + "]";

@@ -23,7 +23,7 @@ public class pictureDataReader  {
 
             do{
                 line = sc.nextLine();
-                parts = line.split("\t");
+                parts = line.split("\t");//reads it in by line splits by tabs 
                 name = parts[0];
                 date = parts[1];
                 description = parts[2];

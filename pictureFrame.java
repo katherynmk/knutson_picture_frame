@@ -9,6 +9,8 @@
  * JTextField for holding the date, its center section filled with the description JTextArea, and its
  * south section filled with a JPanel that holds the three buttons.
  */
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,29 +19,34 @@ import java.awt.image.*;
 
 
 public class pictureFrame extends JFrame {
+    //variabales
     private ArrayList<BufferedImage> loadedpictures = pictureLoader.loadImagesFromPictureData(pictureDataReader.readQuestionsFromFile("descriptions.txt"));
     private ArrayList<pictureData> pictures = pictureDataReader.readQuestionsFromFile("descriptions.txt");
     private int index = 0;
 
     //code from klumps in class menu and mouse frame 
     private int setimage(int index){
+        //changes the index
         this.index = this.index + index;
         return this.index;
     }
 
     private void setup(picturePanel panel, JTextField date, JTextArea description, int index){
+        //Zac helped me write this, basically sets up the panel with the tet and description and picture 
         panel.setPicture(loadedpictures.get(index));
         date.setText(pictures.get(index).getDate());
         description.setText(pictures.get(index).getDescription());
     }
 
     private void save(String date, String description){
+         //Zac helped me write this, it saves the text fields that the user edits and re-writes the description file 
         pictures.get(index).setDate(date);
         pictures.get(index).setDescription(description);
         pictureDataWriter.writeDataToFile(pictures);
     }
 
-    public void setupMainMenu() {   
+    public void setupMainMenu(JTextField date, JTextArea description) { 
+        //this is almost all from Klumps code   
         JMenuBar mbar = new JMenuBar();
         JMenu mnuFile = new JMenu("File");
         JMenu mnuHelp = new JMenu("Help");
@@ -47,6 +54,14 @@ public class pictureFrame extends JFrame {
         mbar.add(mnuHelp);
 
         JMenuItem miSave = new JMenuItem("Save");
+        miSave.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    save(date.getText(), description.getText());
+       
+                }
+            }
+        );
         mnuFile.add(miSave);
         JMenuItem miExit = new JMenuItem("Exit");
         miExit.addActionListener(new ActionListener() {
@@ -59,6 +74,7 @@ public class pictureFrame extends JFrame {
         miAbout.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    //im not really an expert
                     JOptionPane.showMessageDialog(null,"By Katie Knutson: Java Expert");
                 }
             }
@@ -71,7 +87,7 @@ public class pictureFrame extends JFrame {
     public pictureFrame(){
         //code from notes 
         
-        setupMainMenu();
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Picture Frame");
         setBounds(100,100,290,400);
@@ -101,7 +117,7 @@ public class pictureFrame extends JFrame {
         );
         panSouth.add(prev);
         JButton save = new JButton ("Save");
-        prev.addActionListener(
+        save.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     save(date.getText(), description.getText());
@@ -111,7 +127,7 @@ public class pictureFrame extends JFrame {
         );
         panSouth.add(save);
         JButton next = new JButton ("Next");
-        prev.addActionListener(
+        next.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     setup(picturePanel, date, description,setimage(1));
@@ -129,7 +145,7 @@ public class pictureFrame extends JFrame {
         panCenter.add(date, BorderLayout.NORTH);
         panCenter.add(description, BorderLayout.CENTER);
         c.add(panCenter, BorderLayout.CENTER);
-
+        setupMainMenu(date, description);
     }
 
 }

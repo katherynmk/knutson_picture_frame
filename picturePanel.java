@@ -24,9 +24,11 @@ public class picturePanel extends JPanel implements MouseListener, MouseMotionLi
     private BufferedImage picture;
   
     public picturePanel(BufferedImage picture) {
+        //creates top left corner and shows the picture
             this.picture = picture;
             messageToShow = "(x = 0, y = 0)";
             setPreferredSize(new Dimension(200,200)); 
+            //uses the mouse movement methods Klump wrote 
             addMouseListener(this);
             addMouseMotionListener(this);
             msgX = 10;
