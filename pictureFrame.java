@@ -24,7 +24,7 @@ public class pictureFrame extends JFrame {
     //code from klumps in class menu and mouse frame 
     private int setimage(int index){
         this.index = this.index + index;
-        return index;
+        return this.index;
     }
 
     private void setup(picturePanel panel, JTextField date, JTextArea description, int index){
@@ -33,7 +33,11 @@ public class pictureFrame extends JFrame {
         description.setText(pictures.get(index).getDescription());
     }
 
-
+    private void save(String date, String description){
+        pictures.get(index).setDate(date);
+        pictures.get(index).setDescription(description);
+        pictureDataWriter.writeDataToFile(pictures);
+    }
 
     public void setupMainMenu() {   
         JMenuBar mbar = new JMenuBar();
@@ -90,7 +94,7 @@ public class pictureFrame extends JFrame {
         prev.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    
+                    //Exception in thread "AWT-EventQueue-0" java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 4
                     setup(picturePanel, date, description, setimage(-1));
                 }
             }
@@ -100,6 +104,7 @@ public class pictureFrame extends JFrame {
         prev.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    save(date.getText(), description.getText());
        
                 }
             }
@@ -109,7 +114,6 @@ public class pictureFrame extends JFrame {
         prev.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
- 
                     setup(picturePanel, date, description,setimage(1));
                 }
             }
