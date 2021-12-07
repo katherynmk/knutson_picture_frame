@@ -14,29 +14,20 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.image.*;
-import javax.imageio.*;
-import java.awt.Graphics;
+
 
 public class pictureFrame extends JFrame {
-    ArrayList<BufferedImage> loadedpictures = pictureLoader.loadImagesFromPictureData(pictureDataReader.readQuestionsFromFile("descriptions.txt"));
-    ArrayList<pictureData> pictures = pictureDataReader.readQuestionsFromFile("descriptions.txt");
-    int index = 0;
-    pictureData Picture;
-    private BufferedImage picture;
-    //Picture = new pictureData(pictures[index].getDescription,  pictues[index].getDate, pictures[index].getName);
-
-
-    //pas two array lists
-    //current index is 0 
-    //frame tells panel what the picture is
-    //dont load anything in the panel 
+    private ArrayList<BufferedImage> loadedpictures = pictureLoader.loadImagesFromPictureData(pictureDataReader.readQuestionsFromFile("descriptions.txt"));
+    private ArrayList<pictureData> pictures = pictureDataReader.readQuestionsFromFile("descriptions.txt");
+    private int index = 0;
 
     //code from klumps in class menu and mouse frame 
-    private void setimage(int index){
-        this.index += index;
+    private int setimage(int index){
+        this.index = this.index + index;
+        return index;
     }
 
-    private void setup(picturePanel panel, JTextField date, JTextArea description){
+    private void setup(picturePanel panel, JTextField date, JTextArea description, int index){
         panel.setPicture(loadedpictures.get(index));
         date.setText(pictures.get(index).getDate());
         description.setText(pictures.get(index).getDescription());
@@ -71,7 +62,7 @@ public class pictureFrame extends JFrame {
         mnuHelp.add(miAbout);
         setJMenuBar(mbar);
     }
-//1 text panel, 1 button panel, 1 picture panel 
+    //1 text panel, 1 button panel, 1 picture panel 
     
     public pictureFrame(){
         //code from notes 
@@ -87,8 +78,8 @@ public class pictureFrame extends JFrame {
         c.add(picturePanel, BorderLayout.NORTH);
 
         //this is where the text is 
-        JTextField date = new JTextField("yeet");
-        JTextArea description = new JTextArea("desceioptjajf");
+        JTextField date = new JTextField(pictures.get(index).getDate());
+        JTextArea description = new JTextArea(pictures.get(index).getDescription());
 
         //this is where the buttons are 
         JPanel panCenter = new JPanel(new BorderLayout());
@@ -99,8 +90,8 @@ public class pictureFrame extends JFrame {
         prev.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    setimage(-1);
-                    setup(picturePanel, date, description);
+                    
+                    setup(picturePanel, date, description, setimage(-1));
                 }
             }
         );
@@ -118,8 +109,8 @@ public class pictureFrame extends JFrame {
         prev.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    setimage(+1);
-                    setup(picturePanel, date, description);
+ 
+                    setup(picturePanel, date, description,setimage(1));
                 }
             }
         );
