@@ -6,3 +6,5 @@ While he gave us 0 code to copy, he helped us write it how he did in a combinati
 This project was hard :( 
 I started work right as this project was released and my hands are killing my.
 RIP Katie's hands, may they go on to a better keyboard someday....
+
+Please refer to the tutoring classroom png so see us all sitting in our virtual classroom
