@@ -13,7 +13,6 @@
 
 import java.awt.Dimension;
 import java.awt.event.*;
-import java.util.*;
 import java.io.*;
 import java.awt.image.*;
 import javax.imageio.*;
@@ -42,14 +41,8 @@ public class picturePanel extends JPanel implements MouseListener, MouseMotionLi
 
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        
-        try {
-            BufferedImage img = ImageIO.read(new File("pic1.png"));
-        g.drawImage(img, 0, 0, null);
-        } catch (Exception ex){ 
-
-            }
+        super.paintComponent(g);//no loading 
+        g.drawImage(picture, 0, 0, null);
         g.drawString(messageToShow,msgX,msgY);
         }
 

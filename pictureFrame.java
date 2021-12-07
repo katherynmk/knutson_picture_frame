@@ -12,9 +12,38 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.awt.image.*;
+import javax.imageio.*;
+import java.awt.Graphics;
 
-public class pictureFrame extends JFrame{
+public class pictureFrame extends JFrame {
+    ArrayList<BufferedImage> loadedpictures = pictureLoader.loadImagesFromPictureData(pictureDataReader.readQuestionsFromFile("descriptions.txt"));
+    ArrayList<pictureData> pictures = pictureDataReader.readQuestionsFromFile("descriptions.txt");
+    int index = 0;
+    pictureData Picture;
+    private BufferedImage picture;
+    //Picture = new pictureData(pictures[index].getDescription,  pictues[index].getDate, pictures[index].getName);
+
+
+    //pas two array lists
+    //current index is 0 
+    //frame tells panel what the picture is
+    //dont load anything in the panel 
+
     //code from klumps in class menu and mouse frame 
+    private void setimage(int index){
+        this.index += index;
+    }
+
+    private void setup(picturePanel panel, JTextField date, JTextArea description){
+        panel.setPicture(loadedpictures.get(index));
+        date.setText(pictures.get(index).getDate());
+        description.setText(pictures.get(index).getDescription());
+    }
+
+
+
     public void setupMainMenu() {   
         JMenuBar mbar = new JMenuBar();
         JMenu mnuFile = new JMenu("File");
@@ -35,7 +64,7 @@ public class pictureFrame extends JFrame{
         miAbout.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null,"Katie Knutson");
+                    JOptionPane.showMessageDialog(null,"By Katie Knutson: Java Expert");
                 }
             }
         );
@@ -46,7 +75,6 @@ public class pictureFrame extends JFrame{
     
     public pictureFrame(){
         //code from notes 
-
         
         setupMainMenu();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -55,27 +83,54 @@ public class pictureFrame extends JFrame{
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
 
-        //this is where the buttons are 
-        JPanel panCenter = new JPanel(new BorderLayout());
-        JPanel panSouth = new JPanel();
-        panSouth.setBackground(Color.WHITE);
-        //add all of the buttons to the botton 
-        JButton prev = new JButton("Prev");
-        panSouth.add(prev);
-        JButton save = new JButton ("Save");
-        panSouth.add(save);
-        JButton next = new JButton ("Next");
-        panSouth.add(next);
-        panCenter.add(panSouth, BorderLayout.SOUTH);
-        
-
-        //where the pictures are
         picturePanel picturePanel = new picturePanel();
         c.add(picturePanel, BorderLayout.NORTH);
 
         //this is where the text is 
         JTextField date = new JTextField("yeet");
         JTextArea description = new JTextArea("desceioptjajf");
+
+        //this is where the buttons are 
+        JPanel panCenter = new JPanel(new BorderLayout());
+        JPanel panSouth = new JPanel();
+        panSouth.setBackground(Color.WHITE);
+        //add all of the buttons to the botton 
+        JButton prev = new JButton("Prev");
+        prev.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    setimage(-1);
+                    setup(picturePanel, date, description);
+                }
+            }
+        );
+        panSouth.add(prev);
+        JButton save = new JButton ("Save");
+        prev.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+       
+                }
+            }
+        );
+        panSouth.add(save);
+        JButton next = new JButton ("Next");
+        prev.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    setimage(+1);
+                    setup(picturePanel, date, description);
+                }
+            }
+        );
+
+
+        panSouth.add(next);
+        panCenter.add(panSouth, BorderLayout.SOUTH);
+        
+
+        //where the pictures are
+
         panCenter.add(date, BorderLayout.NORTH);
         panCenter.add(description, BorderLayout.CENTER);
         c.add(panCenter, BorderLayout.CENTER);

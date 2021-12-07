@@ -13,14 +13,20 @@ public class pictureDataReader  {
     public static ArrayList<pictureData> readQuestionsFromFile(String fname){
         ArrayList<pictureData> pictures = new ArrayList<pictureData>();
         pictureData Picture = new pictureData();
-        String name, description, date; 
+        String name, description, date, line; 
+        String[] parts;
 
     try{
-            Scanner sc = new Scanner(new File(fname)).useDelimiter("\t");
+            Scanner sc = new Scanner(new File(fname));
+            //.useDelimiter("\t")
+
             do{
-                name = sc.next();
-                date = sc.next();
-                description = sc.next();
+                line = sc.nextLine();
+                parts = line.split("\t");
+                name = parts[0];
+                date = parts[1];
+                description = parts[2];
+                
             
                 Picture = new pictureData(description, date, name);
                 pictures.add(Picture);

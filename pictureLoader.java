@@ -13,13 +13,20 @@ import javax.imageio.*;
 
 
 public class pictureLoader {
-    public static ArrayList<BufferedImage> loadImagesFromPictureData(ArrayList<pictureData> pictureData ) throws IOException{
+    public static ArrayList<BufferedImage> loadImagesFromPictureData(ArrayList<pictureData> pictureData ) {
         ArrayList<BufferedImage> loadedpictures = new ArrayList<BufferedImage>();
         BufferedImage picture = null;
-        for(int i = 0; i < pictureData .size(); i++){
+
+       try{ for(int i = 0; i < pictureData .size(); i++){
            picture = ImageIO.read(new File(pictureData.get(i).getName()));
            loadedpictures.add(i, picture);
         }
-        return loadedpictures;
+
+      }
+      catch(Exception ex){
+        return null;
+      }
+      return loadedpictures;
+    }
      }
-}
+
